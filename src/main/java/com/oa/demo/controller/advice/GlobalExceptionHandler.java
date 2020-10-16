@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -15,11 +16,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @Slf4j
-@RestControllerAdvice("com.oa.demo.controller")
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class GlobalExceptionHandler {
+@RestControllerAdvice("com.oa.demo.controller")
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MissingServletRequestParameterException.class)
@@ -51,11 +53,10 @@ public class GlobalExceptionHandler {
 		return errorHandler.getResult();
 	}
 
-	@ResponseStatus(HttpStatus.NOT_FOUND)
-	@ExceptionHandler(NoHandlerFoundException.class)
-	public ResponseResult notFoundHandler(NoHandlerFoundException e) {
-		log.info("23333");
-		return ResultCreator.PARAMS_ERROR.setError("request not found!");
-	}
+//	public ResponseResult notFoundHandler(Exception e) {
+//		log.info("23333" + e.toString());
+//		log.info((e instanceof NoHandlerFoundException) + "");
+//		return ResultCreator.FAILED_ERROR.setError("request not found!");
+//	}
 
 }

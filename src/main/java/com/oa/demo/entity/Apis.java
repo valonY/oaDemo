@@ -2,6 +2,8 @@ package com.oa.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import org.springframework.context.annotation.Conditional;
+
 import java.io.Serializable;
 
 /**

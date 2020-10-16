@@ -1,5 +1,6 @@
 package com.oa.demo.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.oa.demo.dto.ApiCreateDTO;
 import com.oa.demo.dto.ResponseResult;
 import com.oa.demo.dto.ResultCreator;
@@ -9,11 +10,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.beans.BeanCopier;
-import org.springframework.cglib.core.Converter;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.lang.reflect.Method;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -43,10 +44,10 @@ public class ApiController {
 	public ResponseResult updateApi(@PathVariable("id") Long id, @RequestBody ApiCreateDTO params) {
 		BeanCopier beanCopier = BeanCopier.create(ApiCreateDTO.class, Apis.class, true);
 		Apis apis = apisService.getById(id);
-		if (apis == null) return ResultCreator.FAILED_ERROR.setError("查无数据");
+		if (!Optional.ofNullable(apis).isPresent()) return ResultCreator.FAILED_ERROR.setError("查无数据");
 		log.info(params.toString());
 		beanCopier.copy(params, apis, (value, target, context) -> {
-			if(value == null) {
+			if(!Optional.ofNullable(value).isPresent()) {
 				String getFnName = "g" + context.toString().substring(1);
 				try {
 					Method ctx = apis.getClass().getDeclaredMethod(getFnName);
