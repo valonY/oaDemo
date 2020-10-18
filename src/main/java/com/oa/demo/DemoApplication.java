@@ -8,7 +8,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args).getBean(DispatcherServlet.class).setThrowExceptionIfNoHandlerFound(true);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }

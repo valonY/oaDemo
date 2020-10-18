@@ -1,5 +1,7 @@
 package com.oa.demo.dto;
 
+import com.oa.demo.vo.ResponseResult;
+
 public enum ResultCreator {
 	SUCCESS(0, ""),
 	PARAMS_ERROR(1, "参数错误"),

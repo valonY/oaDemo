@@ -1,4 +1,4 @@
-package com.oa.demo.dto;
+package com.oa.demo.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

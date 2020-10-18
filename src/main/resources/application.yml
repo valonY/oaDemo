@@ -1,7 +1,4 @@
 spring:
-  mvc:
-    throw-exception-if-no-handler-found: true
-    static-path-pattern: /statics/**
   datasource:
     druid:
       url: jdbc:mysql://127.0.0.1:13306/oa?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC

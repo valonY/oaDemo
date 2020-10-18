@@ -1,7 +1,7 @@
 package com.oa.demo.controller;
 
 import com.oa.demo.dto.BasicReqParamsDTO;
-import com.oa.demo.dto.ResponseResult;
+import com.oa.demo.vo.ResponseResult;
 import com.oa.demo.utils.Fetcher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

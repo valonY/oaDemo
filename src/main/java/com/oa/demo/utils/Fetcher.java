@@ -1,7 +1,7 @@
 package com.oa.demo.utils;
 
 import com.oa.demo.dto.BasicReqParamsDTO;
-import com.oa.demo.dto.ResponseResult;
+import com.oa.demo.vo.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import com.oa.demo.dto.ResultCreator;
 import org.springframework.web.bind.annotation.RequestMethod;
